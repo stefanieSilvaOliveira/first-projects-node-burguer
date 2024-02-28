@@ -1,9 +1,11 @@
 const express = require('express')
 const uuid = require('uuid')
+const cors = require('cors');
 
-const port = 3000
+const port = 3001
 const app = express()
 app.use(express.json())
+app.use(cors());
 
 const orders = []
 
@@ -31,9 +33,9 @@ const metMiddleware = (request,response,next) =>{
 }
 
 app.post('/order', (request, response) =>{
-    const {order,clientName, price} = request.body
+    const {name,order} = request.body
 
-    const orderNew = {id:uuid.v4(), order, clientName,price,status:"Em preparação"}
+    const orderNew = {id:uuid.v4(),name,order}
     
     orders.push(orderNew)
     
