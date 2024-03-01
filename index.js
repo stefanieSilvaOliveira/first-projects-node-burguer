@@ -63,7 +63,7 @@ app.delete('/order/:id',checkOrderId, (request, response) =>{
  
     const index = request.orderIndex
     
-    orders.splice(index,1)
+    orders.splice(index,1);
     
     return response.status(204).json()
 })
